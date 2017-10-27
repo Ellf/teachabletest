@@ -15,8 +15,8 @@ $(window).on("load", function() {
   		max: 60,
   		min: 8,
   		slide: function(event, ui) {
-  			$('#slider1').val(sectionTitleFontSize + 'px');
+  			$('#slider1').css('font-size', sectionTitleFontSize + ' px');
   		}
 	});
-	$('#slider1').val(sectionTitleFontSize + 'px');
+	
 });
