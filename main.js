@@ -1,6 +1,6 @@
 $(window).on("load", function() {
 	var uipanel;
-	var sectionTitleFontSize = $( ".slider" ).slider( "value", $("h2.section-title").css('font-size') );
+	var sectionTitleFontSize = $("h2.section-title").css('font-size');
 
 	uipanel = '<div class="test-div"><h3>Test Div</h3><div class="ui-wrapper"><div class="slider"></div></div></div>';
 
@@ -9,6 +9,7 @@ $(window).on("load", function() {
 
 
 	$( ".slider" ).slider({
-  		animate: "fast"
+  		animate: "fast",
+  		"value": sectionTitleFontSize
 	});
 });
