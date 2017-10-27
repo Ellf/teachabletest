@@ -1,3 +1,7 @@
+// Getter
+var sectionTitleFontSize = $( ".slider" ).slider( "value", $("h2.section-title").css('font-size'); );
+
+
 $(window).on("load", function() {
 	var uipanel;
 	uipanel = '<div class="test-div"><h3>Test Div</h3><div class="ui-wrapper"><div class="slider"></div></div></div>';
