@@ -2,20 +2,21 @@ $(window).on("load", function() {
 
 	var uipanel;
 	var sectionTitleFontSize = $("h2.section-title").css('font-size');
-	console.log(sectionTitleFontSize);
+	console.log(sectionTitleFontSize); // 22px
 
-	uipanel = '<div class="test-div"><h3>Test Div</h3><div class="ui-wrapper"><div class="slider"></div></div></div>';
+	uipanel = '<div class="test-div"><h3>Test Div</h3><div class="ui-wrapper"><div id="slider1"></div></div></div>';
 
 
 	$('.body-content-view').prepend(uipanel);
 
 
-	$( ".slider" ).slider({
+	$( "#slider1" ).slider({
   		animate: "fast",
-  		range: true,
   		max: 60,
   		min: 8,
-  		value: sectionTitleFontSize
+  		slide: function(event, ui) {
+  			$('#slider1').val(sectionTitleFontSize + 'px');
+  		}
 	});
-
+	$('#slider1').val(sectionTitleFontSize + 'px');
 });
