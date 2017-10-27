@@ -1,4 +1,5 @@
 $(window).on("load", function() {
+
 	var uipanel;
 	var sectionTitleFontSize = $("h2.section-title").css('font-size');
 
@@ -10,6 +11,7 @@ $(window).on("load", function() {
 
 	$( ".slider" ).slider({
   		animate: "fast",
-  		"value": sectionTitleFontSize
+  		value: sectionTitleFontSize
 	});
+
 });
