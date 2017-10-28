@@ -16,8 +16,8 @@ $(window).on("load", function() {
   		min: 8,
   		slide: function(event, ui) {
   			var selection = $('#slider1').slider('value');
-  			$('.section-title').css('font-size', selection + ' px');
-  			console.log(selection + ' px');
+  			$('.section-title').css('font-size', selection + 'px');
+  			console.log(selection + 'px');
   		}
 	});
 	
