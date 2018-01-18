@@ -6,6 +6,9 @@ var lectures ={};
 lectures['254766'] = {};
 lectures['254766'][0] = {'summary':'Affärsmannaskap innebär att skapa affärer som är lönsamma för båda parter genom en god förståelse för kundens behov och kunskap om sin egen förmåga', 'hint':'<ul><li>Att tjäna pengar kan vara ett kortsiktigt mål, medan lönsamhet kan skapa långsiktigt värde.</li><li>Det är affärsmässigt att leverera rätt kvalitet enligt kundens förväntningar.<li>Affärsmannaskap handlar inte bara om att sälja, det handlar om att uppfylla kundbehov.</li></ul>'};
 
+var questionContainer;
+var timeout;
+
 var checkNav = function(){
 
     console.log("disable next");
@@ -141,10 +144,10 @@ var init = function(){
     $("head").append('<meta name="viewport" content="width=device-width, initial-scale=1.0">');
     
     
-    if(getLectureId() == "824877"){
+    if(getLectureId() == "254766"){
 
         finishPage();
-        $('li[data-lecture-id="824877"]').closest("ul").addClass("finish");
+        $('li[data-lecture-id="254766"]').closest("ul").addClass("finish");
         
     }
     
@@ -180,32 +183,6 @@ var init = function(){
     
     
 }
-
-setTimeout(function(){
-    init();
-}, 30);
-
-
-$(window).on('hashchange', function(e){
-      
-   if($(".quiz.ng-scope.single.answered").length > 0){
-       
-       var answers = $(".quiz-answer-container");
-        answers.each(function(){
-            if($(this).hasClass("selected incorrect")){
-                $("button:contains('Continue')").addClass('ng-hide');
-                addResetButton();
-                applyHint();
-            }
-            
-            if($(this).hasClass("selected correct")){
-                applySummary();
-            }
-        });
-       
-   }
-   
-});
 
 var fixScore = function(){
 
