@@ -1,4 +1,6 @@
-atLeastOneCorrect = ["254766", "820482", "820484", "820499", "820488", "948520", "948522" ];
+console.log('loaded beta quiz completion script');
+
+var atLeastOneCorrect = ["254766", "820482", "820484", "820499", "820488", "948520", "948522" ];
 
 var lectures ={};
 lectures['254766'] = {};
