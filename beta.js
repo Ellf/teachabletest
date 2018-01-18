@@ -8,6 +8,14 @@ var url = "https://googledrive.com/host/0BzsL9-tO8--Bd2wtck1nVWUyQ1U/";
 var hintText = "Tips!";
 var resetText = "Reset";
 
+if ($.cookie($.cookie("ajs_user_id")+"_NC") == null) {
+    $.cookie($.cookie("ajs_user_id")+"_NC", ['3956746', '820482', '820484', '820490', '820504', "820488", '820499', '914781', '948520', '948522'], {expires:1, path:'/'});
+}
+
+if ($.cookie($.cookie("ajs_user_id")+"_C") == null) {
+    $.cookie($.cookie("ajs_user_id")+"_C", [], {expires:1, path:'/'});
+}
+
 var atLeastOneCorrect = ["3956746", "820482", "820484", "820499", "820488", "948520", "948522" ];
 
 var lectures ={};
