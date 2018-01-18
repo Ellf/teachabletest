@@ -1,5 +1,13 @@
 console.log('loaded beta quiz completion script');
 
+var storage = '';
+var storageRef = '';
+    
+var url = "https://googledrive.com/host/0BzsL9-tO8--Bd2wtck1nVWUyQ1U/";
+
+var hintText = "Tips!";
+var resetText = "Reset"
+
 var atLeastOneCorrect = ["254766", "820482", "820484", "820499", "820488", "948520", "948522" ];
 
 var lectures ={};
