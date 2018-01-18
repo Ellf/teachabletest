@@ -1,0 +1,66 @@
+<a aria-expanded='false' aria-haspopup='true' class='fedora-navbar-link navbar-link dropdown-toggle' data-toggle='dropdown'>
+  <img class='gravatar' src='{{current_user.gravatar_url}}' alt="{{current_user.email}}">
+  <span class="sr-only">User Settings</span>
+</a>
+<ul class='dropdown-menu'>
+  <li>
+    <a href='{{"/current_user/profile" | school_link }}'>
+      {{'common.edit_profile' | i18n }}
+    </a>
+  </li>
+  <li>
+    <a href='{{"/current_user/subscriptions" | school_link }}'>
+      {{'common.manage_subscriptions' | i18n }}
+    </a>
+  </li>
+  <li>
+    <a href='{{"/current_user/credit_card" | school_link}}'>
+      {{'common.add_change_credit_card' | i18n }}
+    </a>
+  </li>
+  <li>
+    <a href='{{"/sign_out" | school_link}}'>
+      {{'header.log_out' | i18n }}
+    </a>
+  </li>
+</ul>
+
+    <script>
+    // basic functions from the excellent http://www.quirksmode.org/js/cookies.html
+setTimeout(function(){
+    console.log("valid page");
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    
+    /////////////////////////////////
+    // ACTUAL FUN STUFF BELOW
+    /////////////////////////////////
+    
+    var cookieRegistry = [];
+    
+    function listenCookieChange(cookieName, callback) {
+        setInterval(function() {
+            if (cookieRegistry[cookieName]) {
+                if (readCookie(cookieName) != cookieRegistry[cookieName]) { 
+                    // update registry so we dont get triggered again
+                    cookieRegistry[cookieName] = readCookie(cookieName); 
+                    return callback();
+                } 
+            } else {
+                cookieRegistry[cookieName] = readCookie(cookieName);
+            }
+        }, 100);
+    }
+    listenCookieChange('signed_in', function() {
+        delete window.localStorage["notComplete"];
+    });
+}, 100);
+</script>

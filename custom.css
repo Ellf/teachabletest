@@ -1,0 +1,96 @@
+.imageAnswer{
+    width:50%;
+}
+
+
+
+
+.section-item{
+    pointer-events: none;
+}
+
+.section-item[data-lecture-id="824877"]{
+    pointer-events:auto !important;
+}
+
+.selected .quiz-answer{
+    border:3px solid gray !important;
+}
+
+.tempStyle{
+    border: 1px solid #eee;
+      padding: 10px 20px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      
+      color: #818181; 
+}
+
+#resetButton{
+  font-size:17px;
+}
+
+.quiz-controls{
+  position:relative;
+}
+
+#resetButton{
+  margin:0 auto;
+  position:absolute;
+  left:40%;
+}
+
+#hint{
+  font-weight:bold;
+  font-size:17px;
+  margin-top:7px;
+}
+
+.hidden{
+  display:none;
+}
+
+.notClicable{
+    
+    cursor: default;
+    background-image: none;
+    opacity: 0.65;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    color: #333;
+    background-color: #E6E6E6;
+
+}
+
+.hidden{
+    display:none;
+}
+
+.responsive-width {
+    font-size: 3vw;
+}
+
+i{
+    vertical-align:middle;
+}
+
+.notCompleteQ{
+    
+    color:#d9534f !important;
+}
+
+.completeQ{
+    color:#0EB153 !important;
+}
+
+@media only screen and (max-width: 500px) {
+   .phone-hidden{
+        display:none;
+    }
+    .responsive-font{
+        font-size:3vh !important;   
+    }
+}
