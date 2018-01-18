@@ -8,11 +8,11 @@ var url = "https://googledrive.com/host/0BzsL9-tO8--Bd2wtck1nVWUyQ1U/";
 var hintText = "Tips!";
 var resetText = "Reset";
 
-var atLeastOneCorrect = ["254766", "820482", "820484", "820499", "820488", "948520", "948522" ];
+var atLeastOneCorrect = ["3956746", "820482", "820484", "820499", "820488", "948520", "948522" ];
 
 var lectures ={};
-lectures['254766'] = {};
-lectures['254766'][0] = {'summary':'Affärsmannaskap innebär att skapa affärer som är lönsamma för båda parter genom en god förståelse för kundens behov och kunskap om sin egen förmåga', 'hint':'<ul><li>Att tjäna pengar kan vara ett kortsiktigt mål, medan lönsamhet kan skapa långsiktigt värde.</li><li>Det är affärsmässigt att leverera rätt kvalitet enligt kundens förväntningar.<li>Affärsmannaskap handlar inte bara om att sälja, det handlar om att uppfylla kundbehov.</li></ul>'};
+lectures['3956746'] = {};
+lectures['3956746'][0] = {'summary':'Affärsmannaskap innebär att skapa affärer som är lönsamma för båda parter genom en god förståelse för kundens behov och kunskap om sin egen förmåga', 'hint':'<ul><li>Att tjäna pengar kan vara ett kortsiktigt mål, medan lönsamhet kan skapa långsiktigt värde.</li><li>Det är affärsmässigt att leverera rätt kvalitet enligt kundens förväntningar.<li>Affärsmannaskap handlar inte bara om att sälja, det handlar om att uppfylla kundbehov.</li></ul>'};
 
 var questionContainer;
 var timeout;
