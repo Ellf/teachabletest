@@ -40,11 +40,9 @@ setTimeout(function(){
         return null;
     }
     
-    /////////////////////////////////
-    // ACTUAL FUN STUFF BELOW
-    /////////////////////////////////
-    
     var cookieRegistry = [];
+
+    // listen for new sign in then delete uncompleted cache
     
     function listenCookieChange(cookieName, callback) {
         setInterval(function() {

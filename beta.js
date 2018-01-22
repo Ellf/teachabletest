@@ -1,26 +1,29 @@
-console.log('loaded beta quiz completion script');
+//console.log('loaded beta quiz completion script');
 
-var storage = '';
-var storageRef = '';
+//var storage = '';
+//var storageRef = '';
     
-var url = "https://googledrive.com/host/0BzsL9-tO8--Bd2wtck1nVWUyQ1U/";
+//var url = "https://googledrive.com/host/0BzsL9-tO8--Bd2wtck1nVWUyQ1U/";
 
-var hintText = "Tips!";
-var resetText = "Reset";
+var hintText = "Consejos";
+var resetText = "Reiniciar";
 
 if ($.cookie($.cookie("ajs_user_id")+"_NC") == null) {
-    $.cookie($.cookie("ajs_user_id")+"_NC", ['3956746', '820482', '820484', '820490', '820504', "820488", '820499', '914781', '948520', '948522'], {expires:1, path:'/'});
+    $.cookie($.cookie("ajs_user_id")+"_NC", ['3956746'], {expires:1, path:'/'});
 }
 
 if ($.cookie($.cookie("ajs_user_id")+"_C") == null) {
     $.cookie($.cookie("ajs_user_id")+"_C", [], {expires:1, path:'/'});
 }
 
-var atLeastOneCorrect = ["3956746", "820482", "820484", "820499", "820488", "948520", "948522" ];
+var atLeastOneCorrect = [""];
 
 var lectures ={};
 lectures['3956746'] = {};
-lectures['3956746'][0] = {'summary':'Affärsmannaskap innebär att skapa affärer som är lönsamma för båda parter genom en god förståelse för kundens behov och kunskap om sin egen förmåga', 'hint':'<ul><li>Att tjäna pengar kan vara ett kortsiktigt mål, medan lönsamhet kan skapa långsiktigt värde.</li><li>Det är affärsmässigt att leverera rätt kvalitet enligt kundens förväntningar.<li>Affärsmannaskap handlar inte bara om att sälja, det handlar om att uppfylla kundbehov.</li></ul>'};
+lectures['3956746'][0] = {'summary':'Una solicitud de cambio es una comunicación formal que busca la modificación de uno o más elementos de configuración (ECs). Los servicios, SLAs y computadoras son ejemplos de ECs. Una estrategia de negocio no es por lo general un EC y estaría fuera de alcance de la gestión de cambios.', 'hint':'<ul><li>Hints can go here. Likely going to change this feature.</li></ul>'};
+lectures['3956747'] = {};
+lectures['3956747'][0] = {'summary':'Cada uno de estos son un propósito de la operación del servicio, excepto la opción A, "llevar a cabo pruebas para asegurar que los servicios están diseñados para satisfacer las necesidades del negocio". La opción A es parte de la transición del servicio.', 'hint':'<ul><li>Hints can go here. Likely going to change this feature.</li></ul>'};
+
 
 var questionContainer;
 var timeout;
@@ -36,7 +39,7 @@ var checkNav = function(){
             $(".nav-btn.complete").removeClass("ng-hide");
         }
         else{
-            
+            // do nothing
         }
     
     }
@@ -71,7 +74,7 @@ function get_current_date() {
 
 function congrats(){
 
-    $('.section-title[data-lecture-id="824877"]').find("i").replaceWith('<i class="fa fa-youtube-play"></i>');
+    $('.section-title[data-lecture-id="3956746"]').find("i").replaceWith('<i class="fa fa-youtube-play"></i>');
 
     if($("#congrats").length == 0){
         
@@ -133,13 +136,13 @@ function finishPage(){
 
 var init = function(){
 
-    $('li[data-lecture-id="824877"]').closest("ul").removeClass("finish");
+    $('li[data-lecture-id="3956746"]').closest("ul").removeClass("finish");
     var notComplete = $.cookie($.cookie("ajs_user_id")+"_NC");
     if( jQuery.type(notComplete) != "undefined"){
         notComplete = notComplete.split(',');
     }
     else{
-        notComplete = [];
+        //notComplete = [];
     }
     
     var complete = $.cookie($.cookie("ajs_user_id")+"_C");
@@ -148,7 +151,7 @@ var init = function(){
     }
     else{
         var all = ['3956746'];
-        var complete = [];
+        complete = [];
         for(var x=0; x<all.length; x++){
             if(jQuery.inArray(all[x], notComplete) <0){
                 complete.push(all[x]);
@@ -160,10 +163,10 @@ var init = function(){
     $("head").append('<meta name="viewport" content="width=device-width, initial-scale=1.0">');
     
     
-    if(getLectureId() == "254766"){
+    if(getLectureId() == "3956706"){
 
         finishPage();
-        $('li[data-lecture-id="254766"]').closest("ul").addClass("finish");
+        $('li[data-lecture-id="3956706"]').closest("ul").addClass("finish");
         
     }
     
@@ -174,16 +177,16 @@ var init = function(){
     
     
     questionContainer = $("body");//$(".quiz-wrapper.ng-scope");
-    $("button:contains('Svara'), button:contains('Check')").removeAttr("ng-click");
-    $("button:contains('Svara'), button:contains('Check')").addClass("disabled").prop("disabled",true);
+    $("button:contains('Responder'), button:contains('Check')").removeAttr("ng-click");
+    $("button:contains('Responder'), button:contains('Check')").addClass("disabled").prop("disabled",true);
     $(".quiz-controls").append("<button id='resetButton' class='btn btn-danger ng-hide center-block responsive-width'><span class='phone-hidden'>"+resetText+" </span><i class='glyphicon glyphicon-repeat'></i> </button>");
     if (lectures[getLectureId()] != undefined){
         
-        $(".quiz-controls").append('<a id="hint" href="#" class="pull-right ng-hide" data-toggle="modal" data-target="#myModal">Tips <span class="glyphicon glyphicon-question-sign"></span></a>');
+        $(".quiz-controls").append('<a id="hint" href="#" class="pull-right ng-hide" data-toggle="modal" data-target="#myModal">' + hintText + ' <span class="glyphicon glyphicon-question-sign"></span></a>');
         $(".quiz-controls").append('<div id="myModal" class="modal fade" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Tips</h4></div><div class="modal-body"><p>'+lectures[getLectureId()][currentQ()-1].hint+'</p></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div></div>');
 
         $(".quiz-question.ng-binding").after("<div id='summary1' class='alert alert-success ng-hide'>"+lectures[getLectureId()][currentQ()-1].summary+"</div");
-        $(".quiz-controls").before("<div id='summary2' class='alert alert-success ng-hide'>"+lectures[getLectureId()][currentQ()-1].summrary+"</div");
+        //$(".quiz-controls").before("<div id='summary2' class='alert alert-success ng-hide'>"+lectures[getLectureId()][currentQ()-1].summrary+"</div");
     }
     
     checkNav();
@@ -213,6 +216,7 @@ var fixScore = function(){
 
 var getLectureId = function(){
     var path = window.location.pathname.split( '/' );
+    console.log('path: ', path);
     return path[path.length -1];
 }
 
@@ -231,44 +235,44 @@ var examLength = function(){
 
 //this method search for any answers with .jpg or .gif and replace it with the image with it's name in the public folder that holds the images
 
-var getImgs = function(){
+// var getImgs = function(){
 
 
 
-    var options = $(".quiz-answer, .tempStyle");
-    options.each(function(){
-    child = $(this).find('span');
-    ext = child.text().substr(child.text().length-4);
-        if( ext == ".png" || ext == ".jpg" ){
-        var op = $(this);
-        console.log("this-->", op);
-        var img = child.text();
-    var imgRef = storageRef.child('images/'+img);
+//     var options = $(".quiz-answer, .tempStyle");
+//     options.each(function(){
+//     var child = $(this).find('span');
+//     var ext = child.text().substr(child.text().length-4);
+//         if( ext == ".png" || ext == ".jpg" ){
+//         var op = $(this);
+//         console.log("this-->", op);
+//         var img = child.text();
+//     var imgRef = storageRef.child('images/'+img);
 
-    imgRef.getDownloadURL().then(function(url) {
+//     imgRef.getDownloadURL().then(function(url) {
 
-    op.append('<img src="'+url+child.text()+'" class="imageAnswer">');
-    }).catch(function(error,e) {
-    console.log('error',error,"e",e)
-    // Handle any errors
-    });
+//     op.append('<img src="'+url+child.text()+'" class="imageAnswer">');
+//     }).catch(function(error,e) {
+//     console.log('error',error,"e",e)
+//     // Handle any errors
+//     });
       
-            child.remove();
-        }
-    });
-}
+//             child.remove();
+//         }
+//     });
+// }
 
-//this function appends a hint next to the question
+//this method appends a hint next to the question
 var applyHint = function(){
     $("#hint").removeClass('ng-hide');
 }
 
-//this function appends a summary when answered correctly
+//this method appends a summary when answered correctly
 var applySummary = function(){
     $("#summary1").removeClass("ng-hide");
     $("#summary2").removeClass("ng-hide");
-    $("button:contains('Fortsätt'), button:contains('Continue'), button:contains('Nästa')").removeClass("hidden");
-    $("div:contains('Fortsätt')").removeClass("ng-hide");
+    $("button:contains('Continuar'), button:contains('Continue'), button:contains('Next')").removeClass("hidden");
+    $("div:contains('Continuar')").removeClass("ng-hide");
     $("#nextLec").removeClass("ng-hide");
     
     if(currentQ() == examLength()){
@@ -363,7 +367,7 @@ var applyAssetsAllCorrect = function(){
         if($('.correct').length != $('.selected.correct').length ){
             addResetButton();
             applyHint();
-            $("button:contains('Fortsätt'), button:contains('Continue'), button:contains('Nästa')").addClass("ng-hide");
+            $("button:contains('Continue'), button:contains('Continue'), button:contains('Next')").addClass("ng-hide");
         }else{
             applySummary();
             doneQuestion();
@@ -377,7 +381,7 @@ var applyAssetsAtLeastOneCorrect = function(){
     if($('.quiz-answer-container.ng-scope.selected').hasClass("incorrect")){
         addResetButton();
         applyHint();
-        $("button:contains('Fortsätt'), button:contains('Continue'), button:contains('Nästa')").addClass("ng-hide");
+        $("button:contains('Continue'), button:contains('Continue'), button:contains('Next')").addClass("ng-hide");
         return 0;      
     }
     
@@ -394,7 +398,7 @@ var checkAnswer = function(){
             
             freezeAnswers();
             
-            $("button:contains('Svara'), button:contains('Check')").scope().checkAnswer();
+            $("button:contains('Respond'), button:contains('Check')").scope().checkAnswer();
             return false;
         }
 }
@@ -407,18 +411,22 @@ setTimeout(function(){
 }, 30);
 
 
-$(window).on('hashchange', function(e){
+// when page changes execute function
+$(window).on('hashchange', function(){
       
-   if($(".quiz.ng-scope.single.answered").length >0){
+      //keep doing this until there is no unanswered question
+   if($(".quiz.ng-scope.single.answered").length > 0 ){
        
        var answers = $(".quiz-answer-container");
         answers.each(function(){
+            // If wrong answer do the following
             if($(this).hasClass("selected incorrect")){
-                $("button:contains('Fortsätt'), button:contains('Continue'), button:contains('Nästa')").addClass('ng-hide');
+                $("button:contains('Continue'), button:contains('Continue'), button:contains('Next')").addClass('ng-hide');
                 addResetButton();
                 applyHint();
             }
             
+            // if the answer is correct, apply summary.
             if($(this).hasClass("selected correct")){
                 applySummary();
             }
@@ -429,10 +437,9 @@ $(window).on('hashchange', function(e){
 });
 
 
-
+// setup triggers
 setTimeout(function triggers(){
 
-  
     
     questionContainer.on('mousedown', "button:contains('Tillbaka'), button:contains('Back')", function(){
         console.log('back');
@@ -450,20 +457,20 @@ setTimeout(function triggers(){
             $("a.nav-btn.complete").addClass("ng-hide");
             if($(".quiz.ng-scope").scope().substate.answered){
                 fixAnswers();
-                applyAssets();
+                //applyAssets();
             }
             $(document).ajaxStop(function(){
-                getImgs();
+                //getImgs();
             });
        
       },100);
       
     });
     
-    questionContainer.on('mousedown', "button:contains('Fortsätt'), button:contains('Continue'), button:contains('Nästa')", function(){
+    questionContainer.on('mousedown', "button:contains('Continue'), button:contains('Continue'), button:contains('Next')", function(){
         if (currentQ() < examLength()){
             setTimeout(function(){
-            init();   
+            //init();   
             if($(".quiz.ng-scope").scope().substate.answered){
                 fixAnswers();
                 if( jQuery.inArray(getLectureId(), atLeastOneCorrect) >= 0){
@@ -474,7 +481,7 @@ setTimeout(function triggers(){
                 }
             }
             $(document).ajaxStop(function(){
-                getImgs();
+                //getImgs();
             });
             $(".nav-btn.complete").addClass("ng-hide");
           },200);
@@ -499,9 +506,9 @@ setTimeout(function triggers(){
     questionContainer.on('click', "#resetButton", function(){
         $("#resetButton").addClass("ng-hide");
         $("#hint").addClass("ng-hide");
-        $("button:contains('Svara'), button:contains('Check')").removeClass('ng-hide');
+        $("button:contains('Respond'), button:contains('Check')").removeClass('ng-hide');
         retrieveAnswers();
-        $("button:contains('Svara'), button:contains('Check')").addClass("disabled").prop("disabled", true);
+        $("button:contains('Respond'), button:contains('Check')").addClass("disabled").prop("disabled", true);
         var answers = $(".quiz-answer-container");
         answers.each(function(){
                 if($(this).hasClass("selected") && $(this).hasClass("correct")){
@@ -515,7 +522,7 @@ setTimeout(function triggers(){
                 $(".quiz.ng-scope.single").removeClass('answered');
                 $("#resetButton").addClass('ng-hide');
                 $(".quiz.ng-scope").scope().substate.answered = false;
-                for(x in $(".quiz.ng-scope").scope().answers){
+                for(var x in $(".quiz.ng-scope").scope().answers){
                     $(".quiz.ng-scope").scope().answers[x].correct = false;
                     $(".quiz.ng-scope").scope().answers[x].selected = false;
                 }
@@ -530,10 +537,10 @@ setTimeout(function triggers(){
     });
     
     
-    questionContainer.on("click", "button:contains('Svara'), button:contains('Check')", function(){
+    questionContainer.on("click", "button:contains('Respond'), button:contains('Check')", function(){
     
     
-        $("button:contains('Fortsätt'), button:contains('Continue'), button:contains('Nästa')").addClass("hidden");
+        $("button:contains('Continue'), button:contains('Continue'), button:contains('Next')").addClass("hidden");
         checkAnswer();
         if( jQuery.inArray(getLectureId(), atLeastOneCorrect) >= 0){
             window.setTimeout(function(){
@@ -559,13 +566,13 @@ setTimeout(function triggers(){
         }
         
         if( currentQ() == examLength()){
-            $("button:contains('Fortsätt'), button:contains('Continue'), button:contains('Nästa')").replaceWith("<div id='nextLec' class='btn btn-primary pull-right ng-hide'>Nästa >></div>");
+            $("button:contains('Continuar'), button:contains('Continue'), button:contains('Next')").replaceWith("<div id='nextLec' class='btn btn-primary pull-right ng-hide'>Next >></div>");
             questionContainer.one("click", "#nextLec", function(e){
                 console.log("go next lecture");
-                $(".nav-btn.complete.pull-right")[0].click();
+                $(".nav-btn.complete")[0].click();
                 e.stopPropagation();
                 $(document).ajaxStop(function(){
-                    getImgs();
+                    //getImgs();
                 });
             });
         }
@@ -586,7 +593,7 @@ setTimeout(function triggers(){
     
     questionContainer.on('click', ".quiz-answer-container.ng-scope", function(){
     
-        $("button:contains('Svara'), button:contains('Check')").removeClass("disabled").prop("disabled",false);
+        $("button:contains('Respond'), button:contains('Check')").removeClass("disabled").prop("disabled",false);
         
     });
     
@@ -613,7 +620,7 @@ setTimeout(function triggers(){
         $(document).ajaxComplete(function(){
             checkNav();
             console.log("next lecture get images");
-            getImgs();
+            //getImgs();
         });
     });
 
